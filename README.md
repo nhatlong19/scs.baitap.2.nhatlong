@@ -1,33 +1,50 @@
-# Setup
-Please run the below commands:
+# I - Setup
+
+### 1. Clone repo
 ```
 git clone git@github.com:noothaithinh/scs.baitap.2.git
 cd scs.baitap.2.git
 sh ./install.sh
 ```
+### 2. Đổi URL
+```
+git remote set-url origin git@github.com:nhatlong19/scs.baitap.2.nhatlong.git
+```
 
-# Bai tap:
+# II - Giai bai tap:
 
-### 1. Thêm file .gitignore
-Thêm một file **.gitignore** sao cho không được commit file **.env** và folder **tmp**
+## 1. Thêm file .gitignore
 
-### 2. Tạo pull request
 Run command:
 ```
-git fetch origin
+vim .gitignore
 ```
-Từ 2 branch **< master >** và **< develop >** hãy tạo branch **< release >** và tạo pull request để merge vào **< master >**, để được branch **< master >**:
+thêm các file .env và tmp
+
+
+## 2. Tạo pull request
+
+### Push code lên các nhánh
+Run command:
 ```
-init
-commit 1
-commit 2
-commit 3
-commit 4
-commit 5
-commit 6
-commit 7
-commit 8
-commit 9
+git checkout develop
+git add .
+git commit -m "push code to master"
+git push origin master
+
+git checkout develop
+git add .
+git commit -m "push code to develop"
+git push origin develop
+```
+### Copy branch **< release >** từ  **< master >**
+Run command:
+```
+git checkout -b release master
 ```
 
-### 3. Tạo một commit gửi lại tất cả các commands và chú thích cách làm bài ( nếu cần ) bằng markdown
+### Tạo Pull Request để Merge branch **< develop >** vào **< release >** 
+
+Sẽ sinh ra conflict ở bước này, ta cần Resolve
+
+### Tạo Pull Request để Merge branch **< release >**  vào **< master >** 
